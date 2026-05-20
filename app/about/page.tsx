@@ -139,13 +139,13 @@ export default function AboutPage() {
 
         <ScrollReveal delay={1}>
           <div className="timeline">
-            {TIMELINE.map(({ year, text, iscurrent }) => (
-              <div key={year} className="timeline-item">
-                <div className={`timeline-dot${iscurrent ? " current" : ""}`} aria-hidden="true" />
-                <p className="timeline-year">{year}</p>
-                <p className="timeline-text">{text}</p>
-              </div>
-            ))}
+           {TIMELINE.map((item) => (
+  <div key={item.year} className="timeline-item">
+    <div className={`timeline-dot${item.current ? " current" : ""}`} aria-hidden="true" />
+    <p className="timeline-year">{item.year}</p>
+    <p className="timeline-text">{item.text}</p>
+  </div>
+))}
           </div>
         </ScrollReveal>
       </section>

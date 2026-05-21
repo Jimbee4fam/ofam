@@ -177,7 +177,13 @@ export default function HomePage() {
         <ScrollReveal delay={1}>
           <div className="services-grid">
             {SERVICES.map((s) => (
-              <ServiceCard key={s.title} {...s} />
+              <ServiceCard
+                key={s.title}
+                icon={s.icon}
+                title={s.title}
+                description={s.desc}
+                tags={[...s.tags]}
+              />
             ))}
           </div>
         </ScrollReveal>
@@ -277,18 +283,14 @@ export default function HomePage() {
             {/* KPIs */}
             <div className="portal-body">
               <div className="portal-kpis">
-                {[
-                  ["—", "Open Work Orders",        "var(--orange)"],
-                  ["—", "In Progress",              "var(--blue)"],
-                  ["—", "Completed This Month",     "var(--green)"],
-                  ["—", "Inspections Due",          "var(--muted)"],
-                ] as [string, string, string][]}
-                {[
-                  ["—", "Open Work Orders",      "var(--orange)"],
-                  ["—", "In Progress",           "var(--blue)"],
-                  ["—", "Completed This Month",  "var(--green)"],
-                  ["—", "Inspections Due",       "var(--muted)"],
-                ].map(([v, l, color]) => (
+                {(
+                  [
+                    ["—", "Open Work Orders",     "var(--orange)"],
+                    ["—", "In Progress",          "var(--blue)"],
+                    ["—", "Completed This Month", "var(--green)"],
+                    ["—", "Inspections Due",      "var(--muted)"],
+                  ] as [string, string, string][]
+                ).map(([v, l, color]) => (
                   <div key={l} className="portal-kpi" style={{ borderTopColor: color }}>
                     <div className="portal-kpi-val" style={{ color }}>{v}</div>
                     <div className="portal-kpi-label">{l}</div>

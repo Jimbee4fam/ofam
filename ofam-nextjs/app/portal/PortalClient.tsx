@@ -130,12 +130,6 @@ export default function PortalClient() {
 
                   {/* KPIs (labelled as example) */}
                   <div className="portal-kpis" style={{ marginBottom: 24 }}>
-                    {[
-                      ["—", "Open Work Orders",     "var(--orange)"],
-                      ["—", "In Progress",          "var(--blue)"],
-                      ["—", "Completed This Month", "var(--green)"],
-                      ["—", "Inspections Due",      "var(--muted)"],
-                    ] as [string, string, string][]}
                     {(
                       [
                         ["—", "Open Work Orders",     "var(--orange)"],

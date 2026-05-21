@@ -19,14 +19,20 @@ const PILLARS = [
   { icon: "💡", title: "Tech-Enabled",           description: "Digital work orders, client portals, and real-time reporting keep you informed without extra effort." },
 ] as const;
 
-const TIMELINE = [
-  { year: "Founded",   text: "Oregon Facilities and Maintenance LLC established with a focus on commercial janitorial and building maintenance services." },
-  { year: "Expanded",  text: "Added full-scope facility maintenance services, growing from janitorial into multi-trade building operations." },
-  { year: "Schools",   text: "Launched dedicated school facility services division, serving K–12 districts with specialised custodial and maintenance programmes." },
-  { year: "Digital",   text: "Deployed digital work order management system and client portal, enabling real-time tracking and reporting." },
-  { year: "Growth",    text: "Expanded service area coverage and added preventive maintenance division, bringing structured PM programming to commercial clients." },
-  { year: "Today",     text: "Serving schools, commercial properties, and institutional clients across Oregon with a full-scope facility management offering.", current: true },
-] as const;
+interface TimelineItem {
+  year: string;
+  text: string;
+  current?: true;
+}
+
+const TIMELINE: TimelineItem[] = [
+  { year: "Founded",  text: "Oregon Facilities and Maintenance LLC established with a focus on commercial janitorial and building maintenance services." },
+  { year: "Expanded", text: "Added full-scope facility maintenance services, growing from janitorial into multi-trade building operations." },
+  { year: "Schools",  text: "Launched dedicated school facility services division, serving K–12 districts with specialised custodial and maintenance programmes." },
+  { year: "Digital",  text: "Deployed digital work order management system and client portal, enabling real-time tracking and reporting." },
+  { year: "Growth",   text: "Expanded service area coverage and added preventive maintenance division, bringing structured PM programming to commercial clients." },
+  { year: "Today",    text: "Serving schools, commercial properties, and institutional clients across Oregon with a full-scope facility management offering.", current: true },
+];
 
 const CLIENT_TYPES = [
   { icon: "🏫", title: "Schools & Districts",       description: "K–12 campuses, administrative offices, gymnasiums, and multi-building school portfolios." },
@@ -139,13 +145,13 @@ export default function AboutPage() {
 
         <ScrollReveal delay={1}>
           <div className="timeline">
-           {TIMELINE.map((item) => (
-  <div key={item.year} className="timeline-item">
-    <div className={`timeline-dot${item.current ? " current" : ""}`} aria-hidden="true" />
-    <p className="timeline-year">{item.year}</p>
-    <p className="timeline-text">{item.text}</p>
-  </div>
-))}
+            {TIMELINE.map(({ year, text, current }) => (
+              <div key={year} className="timeline-item">
+                <div className={`timeline-dot${current ? " current" : ""}`} aria-hidden="true" />
+                <p className="timeline-year">{year}</p>
+                <p className="timeline-text">{text}</p>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
       </section>
